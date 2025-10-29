@@ -4,6 +4,8 @@ load_dotenv()  # biar .env kebaca
 from fastapi import FastAPI
 from app.routes import auth, clients, chat, payments
 from app.database import Base, engine
+from app.routes import webhook
+app.include_router(webhook.router)
 
 # Buat tabel di DB kalau belum ada
 Base.metadata.create_all(bind=engine)
